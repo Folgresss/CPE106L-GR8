@@ -1,0 +1,9 @@
+Welcome to the text file.
+This is the second line.
+Here is the third line.
+This is the fourth line.
+Here is the fifth line.
+This is the sixth line.
+Here is the seventh line.
+This is the eight line.
+And this is the final line of the file.
