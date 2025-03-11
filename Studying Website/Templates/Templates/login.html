@@ -1,19 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Let's Pass Together</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body>
-    <h2>Login</h2>
-    <form method="POST">
-        <label>Email:</label>
-        <input type="email" name="email" required>
-        <br>
-        <label>Password:</label>
-        <input type="password" name="password" required>
-        <br>
-        <button type="submit">Login</button>
-    </form>
-    <p>Don't have an account? <a href="{{ url_for('signup') }}">Sign up here</a></p>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-b from-green-400 to-green-100">
+    <div class="w-full max-w-md bg-white/80 backdrop-blur-lg p-8 rounded-xl shadow-xl border border-gray-200">
+        <h2 class="text-center text-3xl font-bold text-gray-900">Welcome Back!</h2>
+        <p class="text-center text-gray-600 mb-6">Log in to continue your study journey.</p>
+
+        <form method="POST" action="/login" class="space-y-4">
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email Address</label>
+                <input type="email" name="email" id="email" required 
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none">
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
+                <input type="password" name="password" id="password" required 
+                    class="w-full px-4 py-2 border rounded-lg focus:ring-2 focus:ring-green-400 focus:outline-none">
+            </div>
+            
+            <button type="submit" 
+                class="w-full bg-green-500 text-white py-2 rounded-lg hover:bg-green-600 transition duration-300">
+                Log In
+            </button>
+        </form>
+
+        <p class="text-center text-gray-700 mt-4">
+            Don't have an account? 
+            <a href="{{ url_for('signup') }}" class="text-green-500 hover:underline">Sign up here</a>.
+        </p>
+    </div>
 </body>
 </html>
