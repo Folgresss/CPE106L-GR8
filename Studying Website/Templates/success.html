@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Add Deadline</title>
+</head>
+<body>
+    <h2>Add a New Deadline</h2>
+    <form method="POST">
+        <label>Title:</label>
+        <input type="text" name="title" required>
+        <br>
+        <label>Due Date (YYYY-MM-DD):</label>
+        <input type="date" name="due_date" required>
+        <br>
+        <button type="submit">Add Deadline</button>
+    </form>
+    <a href="{{ url_for('calendar') }}">View Calendar</a>
+</body>
+</html>
