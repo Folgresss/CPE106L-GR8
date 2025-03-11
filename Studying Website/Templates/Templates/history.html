@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Completed Deadlines</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
+</head>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-200 to-blue-50">
+    <div class="w-full max-w-2xl bg-white p-6 rounded-lg shadow-md">
+        <h2 class="text-center text-3xl font-bold text-gray-800">Completed Deadlines</h2>
+        <p class="text-center text-gray-600 mb-4">Review your past accomplishments!</p>
+        
+        {% if completed_deadlines %}
+            <div class="overflow-x-auto">
+                <table class="w-full border-collapse border border-gray-300">
+                    <thead>
+                        <tr class="bg-blue-500 text-white">
+                            <th class="p-2 border border-gray-300">Title</th>
+                            <th class="p-2 border border-gray-300">Due Date</th>
+                            <th class="p-2 border border-gray-300">Priority</th>
+                            <th class="p-2 border border-gray-300">Completed On</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for deadline in completed_deadlines %}
+                        <tr class="bg-gray-100 text-gray-700">
+                            <td class="p-2 border border-gray-300">{{ deadline.title }}</td>
+                            <td class="p-2 border border-gray-300">{{ deadline.due_date }}</td>
+                            <td class="p-2 border border-gray-300" style="color: {% if deadline.priority == 'High' %}orange{% elif deadline.priority == 'Medium' %}blue{% else %}purple{% endif %};">{{ deadline.priority }}</td>
+                            <td class="p-2 border border-gray-300">{{ deadline.completed_on }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        {% else %}
+            <p class="text-center text-gray-600">No completed deadlines yet.</p>
+        {% endif %}
+
+        <div class="flex justify-between mt-4">
+            <a href="{{ url_for('dashboard') }}" class="bg-gray-500 text-white px-4 py-2 rounded-lg hover:bg-gray-600">Back to Dashboard</a>
+            <a href="{{ url_for('calendar') }}" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">View Calendar</a>
+        </div>
+    </div>
+</body>
+</html>
