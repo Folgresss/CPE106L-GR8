@@ -1,43 +1,62 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Deadline Calendar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar | Let's Pass Together</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css">
 </head>
-<body>
-    <h2>Your Deadlines</h2>
+<body class="flex items-center justify-center min-h-screen bg-gradient-to-b from-blue-300 to-blue-100">
+    <div class="w-full max-w-2xl bg-white/90 backdrop-blur-lg p-6 rounded-xl shadow-lg border border-gray-200">
+        <h2 class="text-center text-3xl font-bold text-gray-900">Your Study Calendar 📅</h2>
+        <p class="text-center text-gray-600 mb-4">Stay on top of your deadlines and manage your time efficiently.</p>
 
-    <p>Progress: {{ progress|default(0)|round(2) }}% completed</p>
-    <progress value="{{ progress|default(0) }}" max="100"></progress> 
+        <div class="overflow-x-auto">
+            <table class="w-full border-collapse border border-gray-300">
+                <thead>
+                    <tr class="bg-blue-500 text-white">
+                        <th class="p-3 border">Title</th>
+                        <th class="p-3 border">Due Date</th>
+                        <th class="p-3 border">Priority</th>
+                        <th class="p-3 border">Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for deadline in deadlines %}
+                    <tr class="bg-white border">
+                        <td class="p-3 border">{{ deadline.title }}</td>
+                        <td class="p-3 border">{{ deadline.due_date }}</td>
+                        <td class="p-3 border text-{{ 'orange-600' if deadline.priority == 'High' else 'blue-600' if deadline.priority == 'Medium' else 'purple-600' }}">
+                            {{ deadline.priority }}
+                        </td>
+                        <td class="p-3 border text-center">
+                            <form method="POST" action="{{ url_for('mark_completed', deadline_id=deadline.id) }}">
+                                <label class="inline-flex items-center cursor-pointer">
+                                    <input type="checkbox" name="completed" onchange="this.form.submit()" class="form-checkbox h-5 w-5 text-green-500"
+                                    {% if deadline.completed %}checked{% endif %}>
+                                    <span class="ml-2 {% if deadline.completed %}text-green-600 font-semibold{% else %}text-gray-700{% endif %}">
+                                        {% if deadline.completed %}Completed ✅{% else %}Pending ⏳{% endif %}
+                                    </span>
+                                </label>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
 
-    {% if deadlines %}
-        <ul>
-            {% for deadline in deadlines %}
-                <li>
-                    <strong>{{ deadline.title }}</strong> - Due: {{ deadline.due_date.strftime('%Y-%m-%d') }}
-                    
-                    {% if deadline.completed %}
-                        ✅ Completed
-                    {% else %}
-                        ❌ Pending
-                    {% endif %}
+        <div class="mt-4 text-center">
+            <p class="text-lg font-bold {% if progress == 100 %}text-green-600{% else %}text-blue-600{% endif %}">
+                Progress: {{ progress|round(2) }}%
+            </p>
+            <progress class="w-full" value="{{ progress }}" max="100"></progress>
+        </div>
 
-                    <!-- Form to toggle completion -->
-                    <form action="{{ url_for('mark_completed', deadline_id=deadline.id) }}" method="POST" style="display:inline;">
-                        <button type="submit">
-                            Mark as {{ 'Pending' if deadline.completed else 'Completed' }}
-                        </button>
-                    </form>
-                </li>
-            {% endfor %}
-        </ul>
-    {% else %}
-        <p>No deadlines added yet.</p>
-    {% endif %}
-    
-    <br>
-    <a href="{{ url_for('add_deadline') }}">Add New Deadline</a>
-    <br>
-    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
-
+        <div class="flex justify-between mt-4">
+            <a href="{{ url_for('dashboard') }}" class="text-blue-500 hover:underline">Back to Dashboard</a>
+            <a href="{{ url_for('add_deadline') }}" class="text-blue-500 hover:underline">Add New Deadline</a>
+        </div>
+    </div>
 </body>
 </html>
