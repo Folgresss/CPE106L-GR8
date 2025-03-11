@@ -1,3 +1,51 @@
-Folgres.pythonanywhere.com
+Group8.pythonanywhere.com
 
-Open Link for current website progress
+We've updated the website due to technical issues, mostly because of problems we couldn't solve xD
+
+Users can now do the following:
+User Authentication System
+🔹 Signup & Login
+
+Users can sign up and log in securely.
+Flask, SQLAlchemy, and Bcrypt are used for authentication.
+🔹 Session-Based Authentication
+
+Users stay logged in until they log out.
+Secure session management.
+
+Deadline Calendar System
+🔹 View Deadlines
+
+Users can see a list of their deadlines.
+Each deadline includes a title and due date.
+🔹 Add New Deadline
+
+Users can add deadlines with a title and due date.
+🔹 Mark Deadlines as Completed
+
+Users can toggle deadlines between "Completed" ✅ and "Pending" ❌.
+A button next to each deadline allows for quick status changes.
+🔹 Deadline Completion Status
+
+Each deadline clearly shows if it is completed or still pending.
+
+Progress Tracking System
+🔹 Automatic Progress Calculation
+
+The system calculates progress based on completed deadlines.
+Displayed as a percentage and a progress bar.
+🔹 Progress on Calendar Page
+
+Users can see their progress at the top of the calendar.
+Uses default(0) to avoid errors when there are no deadlines.
+🔹 Progress on Dashboard
+
+Users can track overall completion status from the dashboard.
+A progress bar and percentage display help visualize their progress.
+
+Further Update:
+Visual updates
+Deadline Reminders
+Achievement & Badges
+Task lsit / To do Lists
+Study TImer
