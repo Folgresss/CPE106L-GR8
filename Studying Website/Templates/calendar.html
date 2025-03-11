@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Deadline Calendar</title>
+</head>
+<body>
+    <h2>Your Deadlines</h2>
+
+    <p>Progress: {{ progress|default(0)|round(2) }}% completed</p>
+    <progress value="{{ progress|default(0) }}" max="100"></progress> 
+
+    {% if deadlines %}
+        <ul>
+            {% for deadline in deadlines %}
+                <li>
+                    <strong>{{ deadline.title }}</strong> - Due: {{ deadline.due_date.strftime('%Y-%m-%d') }}
+                    
+                    {% if deadline.completed %}
+                        ✅ Completed
+                    {% else %}
+                        ❌ Pending
+                    {% endif %}
+
+                    <!-- Form to toggle completion -->
+                    <form action="{{ url_for('mark_completed', deadline_id=deadline.id) }}" method="POST" style="display:inline;">
+                        <button type="submit">
+                            Mark as {{ 'Pending' if deadline.completed else 'Completed' }}
+                        </button>
+                    </form>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No deadlines added yet.</p>
+    {% endif %}
+    
+    <br>
+    <a href="{{ url_for('add_deadline') }}">Add New Deadline</a>
+    <br>
+    <a href="{{ url_for('dashboard') }}">Back to Dashboard</a>
+
+</body>
+</html>
