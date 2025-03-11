@@ -1,51 +1,36 @@
-Group8.pythonanywhere.com
+----------> Group8.pythonanywhere.com <-----------
+            !!!!! Website Link !!!!!
+Latest version of Group 8's studying website.
+📌 User Authentication
+✅ Signup & Login: Users can create an account and log in securely with hashed passwords.
+✅ Session-based Authentication: Keeps users logged in across pages.
+✅ Flash Messages: Provides real-time feedback for actions (e.g., login errors, success messages).
+✅ Logout System: Securely logs users out.
 
-We've updated the website due to technical issues, mostly because of problems we couldn't solve xD
+📅 Deadline Management
+✅ Add Deadlines: Users can set study deadlines with a title, due date, and priority level.
+✅ View Deadlines in a Calendar: Deadlines are listed in an organized manner.
+✅ Prioritize Tasks: Deadlines have three priority levels:
 
-Users can now do the following:
-User Authentication System
-🔹 Signup & Login
+High (🟠 Orange, 20 points)
+Medium (🔵 Blue, 15 points)
+Low (🟣 Purple, 10 points)
+✅ Mark as Completed: Users can mark deadlines as done.
+✅ Automatic Deadline Removal & History Log:
+Once all deadlines are completed, they are stored in a history log instead of being deleted permanently.
 
-Users can sign up and log in securely.
-Flask, SQLAlchemy, and Bcrypt are used for authentication.
-🔹 Session-Based Authentication
+📈 Progress Tracking
+✅ Dynamic Progress Bar: Shows study progress based on completed deadlines.
+✅ Percentage Display: Displays exact percentage completion.
 
-Users stay logged in until they log out.
-Secure session management.
+🏆 Ranking System
+✅ Earn Points by Completing Deadlines (Based on priority).
+✅ Ranks Update Dynamically:
 
-Deadline Calendar System
-🔹 View Deadlines
-
-Users can see a list of their deadlines.
-Each deadline includes a title and due date.
-🔹 Add New Deadline
-
-Users can add deadlines with a title and due date.
-🔹 Mark Deadlines as Completed
-
-Users can toggle deadlines between "Completed" ✅ and "Pending" ❌.
-A button next to each deadline allows for quick status changes.
-🔹 Deadline Completion Status
-
-Each deadline clearly shows if it is completed or still pending.
-
-Progress Tracking System
-🔹 Automatic Progress Calculation
-
-The system calculates progress based on completed deadlines.
-Displayed as a percentage and a progress bar.
-🔹 Progress on Calendar Page
-
-Users can see their progress at the top of the calendar.
-Uses default(0) to avoid errors when there are no deadlines.
-🔹 Progress on Dashboard
-
-Users can track overall completion status from the dashboard.
-A progress bar and percentage display help visualize their progress.
-
-Further Update:
-Visual updates
-Deadline Reminders
-Achievement & Badges
-Task lsit / To do Lists
-Study TImer
+Unranked 🤮 (0-49 points)
+Bronze Beater 🥉 (50-99 points)
+Silver Stroker 🥈 (100-199 points)
+Gold Gooner 🏅 (200-399 points)
+Emerald Edger 🥒 (400-499 points)
+Platinum Puller 👑 (500+ points)
+✅ Session Stores Rank: Users always see their current rank on the dashboard.
